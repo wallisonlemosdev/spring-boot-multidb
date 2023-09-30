@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app-db:
+    image: postgres:latest
+    container_name: app-postgres
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  auth-db:
+    image: postgres:latest
+    container_name: auth-postgres
+    environment:
+      POSTGRES_DB: auth
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
